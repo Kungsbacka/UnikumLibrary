@@ -1,3 +1,3 @@
-# MetaDirectoryDistribute
+# UnikumLibrary
 
-MetaDirectoryDistribute is a collection of DTSX packages that distribute data from MetaDirectory to other data sources.
+UnikumLibrary is a shared library providing access to the integrational API of Unikum. A client ID and secret must be obtained from Unikum to use this library.
