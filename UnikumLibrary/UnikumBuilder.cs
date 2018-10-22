@@ -59,7 +59,7 @@ namespace UnikumLibrary
             };
         }
 
-        public static Person BuildPerson(string personnr, string fornamn, string efternamn, string epost, string telefon, string mobil, string postadress, string postnummer, string postort, int? schoolYear)
+        public static Person BuildPerson(string personnr, string fornamn, string efternamn, string epost, string privatEpost, string telefon, string mobil, string postadress, string postnummer, string postort, int? schoolYear)
         {
             string p = personnr;
             return new Person()
@@ -81,6 +81,7 @@ namespace UnikumLibrary
                     locality = postort
                 },
                 email = epost,
+                privateEmail = privatEpost,
                 tel = (telefon == null ? null : new Telephone()
                 {
                     telType = "1",

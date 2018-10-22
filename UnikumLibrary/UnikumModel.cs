@@ -32,6 +32,8 @@ namespace UnikumLibrary
         public bool ShouldSerializeadr() { return adr != null; }
         public string email { get; set; }
         public bool ShouldSerializeemail() { return email != null; }
+        public string privateEmail { get; set; }
+        public bool ShouldSerializeprivateEmail() { return privateEmail != null; }
         public PersonExtension extension { get; set; }
         public bool ShouldSerializeextension() { return extension != null; }
         public Telephone telWork { get; set; }
