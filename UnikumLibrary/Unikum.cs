@@ -72,6 +72,7 @@ namespace UnikumLibrary
         {
             if (client == null)
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 client = new HttpClient();
                 client.BaseAddress = new Uri(unikum_URL);
                 client.DefaultRequestHeaders.Add(
