@@ -84,11 +84,6 @@ namespace UnikumLibrary
             return client;
         }
 
-        private string FormatPID(string pid)
-        {
-            return Regex.Replace(pid, @"(\d{8})-?(\w{4})", @"$1-$2");
-        }
-
         public Group GetGroup(string id)
         {
             Group result = null;
@@ -198,7 +193,7 @@ namespace UnikumLibrary
 
         public void AddMembership(Membership mb)
         {
-            String query_uri = unikum_URL + "/v1/memberships/sourcedId/" + mb.sourcedId.source + "/" + mb.sourcedId.id;
+            string query_uri = unikum_URL + "/v1/memberships/sourcedId/" + mb.sourcedId.source + "/" + mb.sourcedId.id;
             foreach (Relation rel in mb.rel)
             {
                 HttpClient client = GetHttpClient();
@@ -210,13 +205,13 @@ namespace UnikumLibrary
                     Console.WriteLine("User " + rel.member.id + " added as " + rel.roleType + " to " + mb.sourcedId.source + " " + mb.sourcedId.id + ".");
                 }
                 else
-                    throw new UnikumException("Could not add [" + rel.member.id + "] (" + rel.idType + ") membership as " + rel.roleType + " vis [" + mb.sourcedId.id + "]: " + resp.ReasonPhrase) { method = "PUT", query = query_uri, json = postData };
+                    throw new Exception(resp.ToString()); // new UnikumException("Could not add [" + rel.member.id + "] (" + rel.idType + ") membership as " + rel.roleType + " vis [" + mb.sourcedId.id + "]: " + resp.ReasonPhrase) { method = "PUT", query = query_uri, json = postData };
             }
         }
 
         public void RemoveMembership(Membership mb)
         {
-            String query_uri = unikum_URL + "/v1/memberships/sourcedId/" + mb.sourcedId.source + "/" + mb.sourcedId.id;
+            string query_uri = unikum_URL + "/v1/memberships/sourcedId/" + mb.sourcedId.source + "/" + mb.sourcedId.id;
             foreach (Relation rel in mb.rel)
             {
                 HttpClient client = GetHttpClient();
